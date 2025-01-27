@@ -20,8 +20,8 @@ ADD . .
 
 # Install Python dependencies
 RUN echo "Installing Python dependencies..." && \
-    pip3 install --no-cache-dir -r requirements.txt 2>&1 || (echo "Failed to install requirements.txt" && exit 1) && \
-    pip3 install --no-cache-dir -r /claude-engineer/requirements.txt 2>&1 || (echo "Failed to install claude-engineer requirements" && exit 1) && \
+    pip3 install --no-cache-dir --break-system-packages -r requirements.txt 2>&1 || (echo "Failed to install requirements.txt" && exit 1) && \
+    pip3 install --no-cache-dir --break-system-packages -r /claude-engineer/requirements.txt 2>&1 || (echo "Failed to install claude-engineer requirements" && exit 1) && \
     echo "Setting execute permissions..." && \
     chmod a+x run.sh || (echo "Failed to set execute permissions on run.sh" && exit 1)
 
